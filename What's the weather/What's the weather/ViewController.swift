@@ -44,7 +44,12 @@ class ViewController: UIViewController {
                 
                
                self.str = newcontentArray![0] as String
-               self.label.text = String(self.str.stringByReplacingOccurrencesOfString("&deg;", withString: "º"))
+                dispatch_async(dispatch_get_main_queue()) // textview takes some time to load data so we used async dispatch
+                    {
+                    self.label.text = String(self.str.stringByReplacingOccurrencesOfString("&deg;", withString: "º"))
+                
+                }
+                
                 
                 }
               else  {
